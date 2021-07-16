@@ -242,13 +242,13 @@ namespace koi {
  * 运动控制
  */
   export enum Movement{
-    //% blockId="goforward" block="goforward"
+    //% blockId="goforward" block="go forward"
     FORWARD = 0x06,
-    //% blockId="gobackward" block="gobackward"
+    //% blockId="gobackward" block="go backward"
     BACKWARD = 0x07,
-    //% blockId="turnleft" block="turnleft"
+    //% blockId="turnleft" block="turn left"
     LEFT = 0x08,
-    //% blockId="trunright" block="trunright"
+    //% blockId="trunright" block="trun right"
     RIGHT = 0x09,
     //% blockId="stop" block="stop"
     STOP = 0x0a
@@ -276,6 +276,7 @@ namespace koi {
 
   //% blockId=koi_set_servo_angle block="KOI Set Servo |%servo Angle |%angle"
   //% group="Robot" weight=99
+  //% servo.min=1 servo.max=4 angle.min=0 angle.max=180
   export function koi_set_servo_angle(servo: number, angle: number): void{
     serial.writeBuffer(Buffer.fromArray([0xff, 0x02, servo, angle]))
   }
