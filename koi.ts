@@ -331,16 +331,17 @@ namespace koi {
   //% group="Robot" weight=99
   export function koi_is_remote_btn_pressed(key: RemoteKey): boolean{
     serial.writeBuffer(Buffer.fromArray([0xff,0x01,0x03,0x00]))
+    var isPressed = false
     var data = serial.readBuffer(4)
     if(data){
       if (data[0] == 0xff && data[1] == 0x01 && data[2] == 0x01){
         if (data[3] == key)
-          return true
+          isPressed = true
         else
-          return false
+          isPressed = false
       }
-    }else
-      return false
+    }
+    return isPressed
   }
 
   /**
@@ -351,13 +352,14 @@ namespace koi {
   //% group="Robot" weight=99
   export function koi_get_sound_loudness():number{
     serial.writeBuffer(Buffer.fromArray([0xff, 0x01, 0x02, 0x00]))
+    var voice = 0
     var data = serial.readBuffer(4)
     if (data) {
       if (data[0] == 0xff && data[1] == 0x02 && data[2] == 0x01) {
-        return data[3]
+        voice = data[3]
       }
-    } else
-      return 0
+    }
+    return voice
   }
 
 
