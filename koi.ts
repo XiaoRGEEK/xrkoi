@@ -332,7 +332,7 @@ namespace koi {
   export function isRemoteBtnPressed(key: RemoteKey): boolean{
     serial.writeBuffer(Buffer.fromArray([0xff,0x01,0x03,0x00]))
     let isPressed = false
-    var data = serial.readBuffer(4)
+    let data = serial.readBuffer(4)
     if(data){
       if (data[0] == 0xff && data[1] == 0x01 && data[2] == 0x01){
         if (data[3] == key)
@@ -353,7 +353,7 @@ namespace koi {
   export function getSoundLoudness():number{
     serial.writeBuffer(Buffer.fromArray([0xff, 0x01, 0x02, 0x00]))
     let voice = 0
-    var data = serial.readBuffer(4)
+    let data = serial.readBuffer(4)
     if (data) {
       if (data[0] == 0xff && data[1] == 0x02 && data[2] == 0x01) {
         voice = data[3]
