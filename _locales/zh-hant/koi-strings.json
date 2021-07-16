@@ -74,5 +74,13 @@
     "koi.Level.fast|block": "快速",
     "koi.Level.low|block": "慢速",
     "koi.koi_set_speed_level|block": "设置速度档位为%level",
-    "koi.koi_set_servo_angle|block": "设置舵机%servo角度为%angle"
+    "koi.koi_set_servo_angle|block": "设置舵机%servo角度为%angle",
+    "koi.koi_is_remote_btn_pressed|block": "红外遥控按键%key被按下",
+    "koi.koi_get_sound_loudness|block": "获取声音响度",
+    "koi.RemoteKey.star|block": "*",
+    "koi.RemoteKey.mark|block": "#",
+    "koi.RemoteKey.up_arrow|block": "↑",
+    "koi.RemoteKey.left_arrow|block": "←",
+    "koi.RemoteKey.right_arrow|block": "→",
+    "koi.RemoteKey.down_arrow|block": "↓"
 }

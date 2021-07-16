@@ -228,6 +228,7 @@ namespace koi {
     basic.pause(300)
   }
 /********************************************************************************** */
+
   /**
    * 发送控制命令
    * @param data buffer数组
@@ -254,6 +255,11 @@ namespace koi {
     STOP = 0x0a
   }
 
+
+  /**
+   * 控制机器人运动
+   * @param movement 运动方式 
+   */
   //% blockId=koi_control_robot block="KOI Control Robot| %move"
   //% group="Robot" weight=99
   export function koi_control_robot(movement: Movement): void{
@@ -268,18 +274,92 @@ namespace koi {
     low = 0x02
   }
 
+  /**
+   * 设置机器人运动速度
+   * @param level 默认为fast, 可调参数为low
+   */
   //% blockId=koi_set_speed_level block="KOI Set Speed Level to | %level"
   //% group="Robot" weight=99
   export function koi_set_speed_level(level: Level): void{
     serial.writeBuffer(Buffer.fromArray([0xff,0x02,0x05,level]))
   }
 
+  /**
+   * 设置单一舵机角度
+   * @param servo 舵机编号1-4
+   * @param angle 角度0-180
+   */
   //% blockId=koi_set_servo_angle block="KOI Set Servo |%servo Angle |%angle"
   //% group="Robot" weight=99
   //% servo.min=1 servo.max=4 angle.min=0 angle.max=180
   export function koi_set_servo_angle(servo: number, angle: number): void{
     serial.writeBuffer(Buffer.fromArray([0xff, 0x02, servo, angle]))
   }
+
+  export enum RemoteKey {
+    num1 = 0x01,
+    num2 = 0x02,
+    num3 = 0x03,
+    num4 = 0x04,
+    num5 = 0x05,
+    num6 = 0x06,
+    num7 = 0x07,
+    num8 = 0x08,
+    num9 = 0x09,
+    //% blockId="star" block="*"
+    star = 0x10,
+    num0 = 0x11,
+    //% blockId="mark" block="#"
+    mark = 0x12,
+    //% blockId="up_arrow" block="↑"
+    up_arrow = 0x13,
+    //% blockId="left_arrow" block="←"
+    left_arrow = 0x14,
+    ok = 0x15,
+    //% blockId="right_arrow" block="→"
+    right_arrow = 0x16,
+    //% blockId="down_arrow" block="↓"
+    down_arrow = 0x17
+  }
+
+  /**
+   * 判断按键是否按下
+   * @param key 判断的按键
+   * @returns 返回true or false
+   */
+  //% blockId=koi_is_remote_btn_pressed block="Is Remote Button |%key was pressed"
+  //% group="Robot" weight=99
+  export function koi_is_remote_btn_pressed(key: RemoteKey): boolean{
+    serial.writeBuffer(Buffer.fromArray([0xff,0x01,0x03,0x00]))
+    var data = serial.readBuffer(4)
+    if(data){
+      if (data[0] == 0xff && data[1] == 0x01 && data[2] == 0x01){
+        if (data[3] == key)
+          return true
+        else
+          return false
+      }
+    }else
+      return false
+  }
+
+  /**
+   * 获取声音响度
+   * @returns 声音响度
+   */
+  //% blockId=koi_get_sound_loudness block="KOI get robot sound loudness"
+  //% group="Robot" weight=99
+  export function koi_get_sound_loudness():number{
+    serial.writeBuffer(Buffer.fromArray([0xff, 0x01, 0x02, 0x00]))
+    var data = serial.readBuffer(4)
+    if (data) {
+      if (data[0] == 0xff && data[1] == 0x02 && data[2] == 0x01) {
+        return data[3]
+      }
+    } else
+      return 0
+  }
+
 
 /********************************************************************************* */
 
