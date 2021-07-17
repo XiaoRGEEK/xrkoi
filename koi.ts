@@ -263,7 +263,7 @@ namespace koi {
   //% blockId=koi_controlRobot block="KOI Control Robot| %move"
   //% group="Robot" weight=99
   export function controlRobot(movement: Movement): void{
-    var cmd = Buffer.fromArray([0xff, 0x02, movement, 0x00])
+    let cmd = Buffer.fromArray([0xff, 0x02, movement, 0x00])
     serial.writeBuffer(cmd)
   }
 
