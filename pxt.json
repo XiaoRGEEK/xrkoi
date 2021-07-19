@@ -9,8 +9,8 @@
     "files": [
         "README.md",
         "koi.ts",
-        "_locales/zh/koi-strings.json",
-        "_locales/zh-hant/koi-strings.json"
+        "_locales/zh/xrkoi-strings.json",
+        "_locales/zh-hant/xrkoi-strings.json"
     ],
     "public": true,
     "preferredEditor": "tsprj"
