@@ -13,5 +13,6 @@
         "_locales/zh-hant/xrkoi-strings.json"
     ],
     "public": true,
-    "preferredEditor": "tsprj"
+    "preferredEditor": "tsprj",
+    "icon": "https://s3.ax1x.com/2020/12/02/D5a42R.png"
 }
