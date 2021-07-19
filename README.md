@@ -2,7 +2,6 @@
 
 extension for AI module form kittenbot, second in-depth development by XiaoRGEEK
 
-![1569642410253](logo.png)
 ![koi](https://s3.ax1x.com/2020/12/02/D5a42R.png)
 
 ## usage:
@@ -23,5 +22,5 @@ MIT
 (The metadata above is needed for package search.)
 
 ```package
-koi=github:Kittenbot/pxt-koi
+koi=github:XiaoRGEEK/xrkoi
 ```
