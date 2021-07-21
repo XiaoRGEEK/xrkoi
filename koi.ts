@@ -297,29 +297,32 @@ namespace koi {
   }
 
   export enum RemoteKey {
-    num1 = 0x01,
-    num2 = 0x02,
-    num3 = 0x03,
-    num4 = 0x04,
-    num5 = 0x05,
-    num6 = 0x06,
-    num7 = 0x07,
-    num8 = 0x08,
-    num9 = 0x09,
-    //% blockId="star" block="*"
-    star = 0x10,
-    num0 = 0x11,
-    //% blockId="mark" block="#"
-    mark = 0x12,
-    //% blockId="up_arrow" block="↑"
-    up_arrow = 0x13,
-    //% blockId="leftArrow" block="←"
-    left_arrow = 0x14,
-    ok = 0x15,
-    //% blockId="rightArrow" block="→"
-    right_arrow = 0x16,
-    //% blockId="downArrow" block="↓"
-    down_arrow = 0x17
+    num0 = 0x68,
+    num1 = 0x30,
+    num2 = 0x18,
+    num3 = 0x7a,
+    num4 = 0x10,
+    num5 = 0x38,
+    num6 = 0x5a,
+    num7 = 0x42,
+    num8 = 0x4a,
+    num9 = 0x52,
+    //% blockId="power" block="POWER"
+    power = 0xa2,
+    //% blockId="menu" block="MENU"
+    menu = 0xe2,
+    //% blockId="test" block="TEST"
+    TEST = 0x22,
+    //% blockId="plus" block="+"
+    plus = 0x02,
+    back = 0xc2,
+    previous = 0xe0,
+    play = 0xa8,
+    next = 0x90,
+    //% blockId="minus" block="-"
+    minus = 0x98,
+    //% blockId="cancel" block="C"
+    cancel = 0xb0
   }
 
   /**
