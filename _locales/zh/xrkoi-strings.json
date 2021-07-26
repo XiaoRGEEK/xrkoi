@@ -80,6 +80,7 @@
     "koi.trackLine|block": "视觉巡线 %key",
     "koi.trackRect|block": "追踪矩形 阈值 %th",
     "koi.writeBuffer|block": "发送控制命令| %cmd",
+    "koi.calibServoAngle|block": "校准舵机 |%id 角度 |%angle",
     "koi|block": "koi",
     "{id:category}Koi": "Koi",
     "{id:group}Audio": "Audio",

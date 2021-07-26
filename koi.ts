@@ -365,6 +365,17 @@ namespace koi {
     return voice
   }
 
+  /**
+   * 校准舵机初始角度，一般在出厂安装的时候进行校正
+   * @param id 舵机id号
+   * @param angle 角度值，一般90上下
+   */
+  //% blockId=koi_calibServoAngle block="KOI calibrate servo |%id angle | %angle"
+  //% group="Robot" weight=99
+  //% id.min=1 id.max=4 angle.min=0 angle.max=180
+  export function calibServoAngle(id: number, angle: number):void{
+    serial.writeBuffer(Buffer.fromArray([0xff, 0x03, id, angle]))
+  }
 
 /********************************************************************************* */
 
