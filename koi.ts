@@ -233,7 +233,7 @@ namespace koi {
    * 发送控制命令
    * @param data buffer数组
    */
-  //% blockId=koi_writeBuffer block="KOI write buffer| %cmd"
+  //% blockId=koi_writeBuffer block="Robot write buffer| %cmd"
   //% group="Robot" weight=99
   export function writeBuffer(data: Buffer): void{
     serial.writeBuffer(data)
@@ -260,7 +260,7 @@ namespace koi {
    * 控制机器人运动
    * @param movement 运动方式 
    */
-  //% blockId=koi_controlRobot block="KOI Control Robot| %move"
+  //% blockId=koi_controlRobot block="Control Robot| %move"
   //% group="Robot" weight=99
   export function controlRobot(movement: Movement): void{
     let cmd = Buffer.fromArray([0xff, 0x02, movement, 0x00])
@@ -278,7 +278,7 @@ namespace koi {
    * 设置机器人运动速度
    * @param level 默认为fast, 可调参数为low
    */
-  //% blockId=koi_setSpeedLevel block="KOI Set Speed Level to | %level"
+  //% blockId=koi_setSpeedLevel block="Robot Set Speed Level to | %level"
   //% group="Robot" weight=99
   export function setSpeedLevel(level: Level): void{
     serial.writeBuffer(Buffer.fromArray([0xff,0x02,0x05,level]))
@@ -289,7 +289,7 @@ namespace koi {
    * @param servo 舵机编号1-4
    * @param angle 角度0-180
    */
-  //% blockId=koi_setServoAngle block="KOI Set Servo |%servo Angle |%angle"
+  //% blockId=koi_setServoAngle block="Robot Set Servo |%servo Angle |%angle"
   //% group="Robot" weight=99
   //% servo.min=1 servo.max=4 angle.min=0 angle.max=180
   export function setServoAngle(servo: number, angle: number): void{
@@ -333,7 +333,7 @@ namespace koi {
   //% blockId=koi_isRemoteBtnPressed block="Is Remote Button |%key was pressed"
   //% group="Robot" weight=99
   export function isRemoteBtnPressed(key: RemoteKey): boolean{
-    serial.writeBuffer(Buffer.fromArray([0xff,0x01,0x03,0x00]))
+    // serial.writeBuffer(Buffer.fromArray([0xff,0x01,0x03,0x00]))
     let isPressed = false
     let data = serial.readBuffer(4)
     if(data){
@@ -351,10 +351,10 @@ namespace koi {
    * 获取声音响度
    * @returns 声音响度
    */
-  //% blockId=koi_getSoundLoudness block="KOI get robot sound loudness"
+  //% blockId=koi_getSoundLoudness block="get robot sound loudness"
   //% group="Robot" weight=99
   export function getSoundLoudness():number{
-    serial.writeBuffer(Buffer.fromArray([0xff, 0x01, 0x02, 0x00]))
+    // serial.writeBuffer(Buffer.fromArray([0xff, 0x01, 0x02, 0x00]))
     let voice = 0
     let data = serial.readBuffer(4)
     if (data) {
@@ -370,11 +370,49 @@ namespace koi {
    * @param id 舵机id号
    * @param angle 角度值，一般90上下
    */
-  //% blockId=koi_calibServoAngle block="KOI calibrate servo |%id angle | %angle"
+  //% blockId=koi_calibServoAngle block="Robot calibrate servo |%id angle | %angle"
   //% group="Robot" weight=99
   //% id.min=1 id.max=4 angle.min=0 angle.max=180
   export function calibServoAngle(id: number, angle: number):void{
     serial.writeBuffer(Buffer.fromArray([0xff, 0x03, id, angle]))
+  }
+
+  export enum Sensors {
+    //% blockId="sound" block="sound sensor"
+    SOUND = 0x02,
+    //% blockId="remote" block="remote controller"
+    REMOTE = 0x03,
+    //% blockId="ir" block="infrared sensor"
+    IR = 0x04
+  }
+
+  /**
+   * 使能传感器
+   * @param sensor 可选参数为Sensors.SOUND, Sensors.IR, Sensors.REMOTE
+   */
+  //% blockId=koi_enableSensor block="Robot enable |%sensor"
+  //% group="Robot" weight=99
+  export function enableSensor(sensor: Sensors):void{
+    serial.writeBuffer(Buffer.fromArray([0xff, 0x01, sensor, 0x01]))
+  }
+
+  /**
+   * 取消使能传感器
+   * @param sensor 可选参数为Sensors.SOUND, Sensors.IR, Sensors.REMOTE
+   */
+  //% blockId=koi_disableSensor block="Robot disable |%sensor"
+  //% group="Robot" weight=99
+  export function disableSensor(sensor: Sensors):void{
+    serial.writeBuffer(Buffer.fromArray([0xff, 0x01, sensor, 0x00]))
+  }
+
+  /**
+   * 正常模式，停止所有数据上传功能
+   */
+  //% blockId=koi_setNormalMode block="Robot set normal mode"
+  //% group="Robot" weight=99
+  export function setNormalMode():void{
+    serial.writeBuffer(Buffer.fromArray([0xff,0x01,0x01, 0x00]))
   }
 
 /********************************************************************************* */
