@@ -330,12 +330,12 @@ namespace koi {
    * @param key 判断的按键
    * @returns 返回true or false
    */
-  //% blockId=koi_isRemoteBtnPressed block="Is Remote Button |%key was pressed"
+  //% blockId=koi_isRemoteBtnPressed block="From |%buffer Is Remote Button |%key was pressed "
   //% group="Robot" weight=99
-  export function isRemoteBtnPressed(key: RemoteKey): boolean{
+  export function isRemoteBtnPressed(buffer:Buffer, key: RemoteKey): boolean{
     // serial.writeBuffer(Buffer.fromArray([0xff,0x01,0x03,0x00]))
     let isPressed = false
-    let data = serial.readBuffer(4)
+    let data = buffer
     if(data){
       if (data[0] == 0xff && data[1] == 0x01 && data[2] == 0x01){
         if (data[3] == key)
@@ -351,12 +351,12 @@ namespace koi {
    * 获取声音响度
    * @returns 声音响度
    */
-  //% blockId=koi_getSoundLoudness block="get robot sound loudness"
+  //% blockId=koi_getSoundLoudness block="from |%buffer to get robot sound loudness "
   //% group="Robot" weight=99
-  export function getSoundLoudness():number{
+  export function getSoundLoudness(buffer: Buffer):number{
     // serial.writeBuffer(Buffer.fromArray([0xff, 0x01, 0x02, 0x00]))
     let voice = 0
-    let data = serial.readBuffer(4)
+    let data = buffer
     if (data) {
       if (data[0] == 0xff && data[1] == 0x02 && data[2] == 0x01) {
         voice = data[3]
