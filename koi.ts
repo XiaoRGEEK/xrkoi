@@ -489,7 +489,7 @@ namespace koi {
   //% blockId=koi_setSubAction2 block="Robot set subaction2| %step"
   //% group="Robot" weight=99
   export function setSubAction2(step: SubAction2): void {
-    serial.writeBuffer(Buffer.fromArray([0xff, 0x02, 0x0c, step]))
+    serial.writeBuffer(Buffer.fromArray([0xff, 0x02, 0x0d, step]))
   }
 
   /**
@@ -499,7 +499,7 @@ namespace koi {
   //% blockId=koi_setSubAction3 block="Robot set subaction3| %step"
   //% group="Robot" weight=99
   export function setSubAction3(step: SubAction3): void {
-    serial.writeBuffer(Buffer.fromArray([0xff, 0x02, 0x0c, step]))
+    serial.writeBuffer(Buffer.fromArray([0xff, 0x02, 0x0e, step]))
   }
 
   /**
@@ -509,7 +509,7 @@ namespace koi {
   //% blockId=koi_setSubAction4 block="Robot set subaction4| %step"
   //% group="Robot" weight=99
   export function setSubAction4(step: SubAction4): void {
-    serial.writeBuffer(Buffer.fromArray([0xff, 0x02, 0x0c, step]))
+    serial.writeBuffer(Buffer.fromArray([0xff, 0x02, 0x0f, step]))
   }
 
 /********************************************************************************* */
