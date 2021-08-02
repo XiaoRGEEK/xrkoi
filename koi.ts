@@ -415,6 +415,103 @@ namespace koi {
     serial.writeBuffer(Buffer.fromArray([0xff,0x01,0x01, 0x00]))
   }
 
+  // export enum Actions{
+  //   ACTION1 = 0x0c,
+  //   ACTION2 = 0x0d,
+  //   ACTION3 = 0x0e,
+  //   ACTION4 = 0x0f,
+  // }
+
+  export enum SubAction4{
+    //% blockId="rst2tiptoe" block="复位->踮脚"
+    RST2TIPTOE = 0X01,
+    //% blockId="tiptoe2rst" block="踮脚->复位"
+    TIPTOE2RST = 0X02,
+  }
+
+  export enum SubAction3 {
+    //% blockId="rst2leftbent" block="复位->左弯腿"
+    RST2LEFTBENT = 0x01,
+    //% blockId="leftbent2rst" block="左弯腿->复位"
+    LEFTBENT2RST = 0X02,
+    //% blockId="rst2rightbent" block="复位->右弯腿"
+    RST2RIGHTBENT = 0X03,
+    //% blockId="rightbent2rst" block="右弯腿->复位"
+    RIGHTBENT2RST = 0X04,
+  }
+
+  export enum SubAction2{
+    //% blockId="rst2leftkick" block="复位->左踢腿"
+    RST2LEFTKICK = 0x01,
+    //% blockId="leftkick2rst" block="左踢腿->复位"
+    LEFTKICK2RST = 0X02,
+    //% blockId="rst2rightkick" block="复位->右踢腿"
+    RST2RIGHTKICK = 0X03,
+    //% blockId="rightkick2rst" block="右踢腿->复位"
+    RIGHTKICK2RST = 0X04,
+  }
+
+  export enum SubAction1{
+    //% blockId="rst2leftside" block="复位->左侧身"
+    RST2LEFTSIDE = 0x01,
+    //% blockId="leftside2rst" block="左侧身->复位"
+    LEFTSIDE2RST = 0x02,
+    //% blockId="rst2rightside" block="复位->右侧身"
+    RST2RIGHTSIDE = 0x03,
+    //% blockId="rightside2rst" block="右侧身->复位"
+    RIGHTSIDE2RST = 0X04,
+
+  }
+
+  /**
+   * 重置所有动作组
+   */
+  //% blockId=koi_resetAllAction block="Robot reset all action"
+  //% group="Robot" weight=99
+  export function resetAllAction():void{
+    serial.writeBuffer(Buffer.fromArray([0xff, 0x02, 0x0b, 0x00]))
+  }
+
+  /**
+   * 设置分部1动作
+   * @param step 各部分单动作
+   */
+  //% blockId=koi_setSubAction1 block="Robot set subaction1| %step"
+  //% group="Robot" weight=99
+  export function setSubAction1(step: SubAction1):void{
+    serial.writeBuffer(Buffer.fromArray([0xff,0x02,0x0c,step]))
+  }
+
+  /**
+   * 设置分部2动作
+   * @param step 各部分单动作
+   */
+  //% blockId=koi_setSubAction2 block="Robot set subaction2| %step"
+  //% group="Robot" weight=99
+  export function setSubAction2(step: SubAction2): void {
+    serial.writeBuffer(Buffer.fromArray([0xff, 0x02, 0x0c, step]))
+  }
+
+  /**
+   * 设置分部2动作
+   * @param step 各部分单动作
+   */
+  //% blockId=koi_setSubAction3 block="Robot set subaction3| %step"
+  //% group="Robot" weight=99
+  export function setSubAction3(step: SubAction3): void {
+    serial.writeBuffer(Buffer.fromArray([0xff, 0x02, 0x0c, step]))
+  }
+
+  /**
+   * 设置分部2动作
+   * @param step 各部分单动作
+   */
+  //% blockId=koi_setSubAction4 block="Robot set subaction4| %step"
+  //% group="Robot" weight=99
+  export function setSubAction4(step: SubAction4): void {
+    serial.writeBuffer(Buffer.fromArray([0xff, 0x02, 0x0c, step]))
+  }
+
 /********************************************************************************* */
 
   //% blockId=koi_initPW block="KOI init powerbrick|Port %port"

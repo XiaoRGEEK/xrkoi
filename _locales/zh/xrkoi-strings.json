@@ -97,5 +97,25 @@
     "{id:group}Graphic": "Graphic",
     "{id:group}Robot": "Robot",
     "{id:group}Tag/Code": "Tag/Code",
-    "{id:group}Wifi": "Wifi"
+    "{id:group}Wifi": "Wifi",
+    "koi.resetAllAction": "重置所有动作组",
+    "koi.setSubAction1|block": "设置分部动作组1 |%step",
+    "koi.setSubAction2|block": "设置分部动作组2 |%step",
+    "koi.setSubAction3|block": "设置分部动作组3 |%step",
+    "koi.setSubAction4|block": "设置分部动作组4 |%step",
+    "koi.SubAction1.rst2leftside": "复位->左侧身",
+    "koi.SubAction1.leftside2rst": "左侧身->复位",
+    "koi.SubAction1.rst2rightside": "复位->右侧身",
+    "koi.SubAction1.rightside2rst": "右侧身->复位",
+    "koi.SubAction2.rst2leftkick": "复位->左踢腿",
+    "koi.SubAction2.leftkick2rst": "左踢腿->复位",
+    "koi.SubAction2.rst2rightkick": "复位->右踢腿",
+    "koi.SubAction2.rightkick2rst": "右踢腿->复位",
+    "koi.SubAction3.rst2leftbent": "复位->左弯腿",
+    "koi.SubAction3.leftbent2rst": "左弯腿->复位",
+    "koi.SubAction3.rst2rightbent": "复位->右弯腿",
+    "koi.SubAction3.rightbent2rst": "右弯腿->复位",
+    "koi.SubAction1.rst2tiptoe": "复位->踮脚",
+    "koi.SubAction1.tiptoe2rst": "踮脚->复位"
+
 }
