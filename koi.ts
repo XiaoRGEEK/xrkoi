@@ -483,7 +483,7 @@ namespace koi {
   }
 
   /**
-   * 设置分部2动作
+   * 设置分部4动作
    * @param step 各部分单动作
    */
   //% blockId=koi_setSubAction2 block="Robot set subaction2| %step"
@@ -493,7 +493,7 @@ namespace koi {
   }
 
   /**
-   * 设置分部2动作
+   * 设置分部3动作
    * @param step 各部分单动作
    */
   //% blockId=koi_setSubAction3 block="Robot set subaction3| %step"
