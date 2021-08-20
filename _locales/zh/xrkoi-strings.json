@@ -117,5 +117,5 @@
     "koi.SubAction3.rightbent2rst": "右弯腿->复位",
     "koi.SubAction1.rst2tiptoe": "复位->踮脚",
     "koi.SubAction1.tiptoe2rst": "踮脚->复位",
-    "koi.getUltrasonicDistance": "获取超声波测距距离 |Trig %Trig|Echo %Echo"
+    "koi.getUltrasonicDistance|block": "获取超声波测距距离 |Trig %Trig|Echo %Echo"
 }

@@ -513,10 +513,7 @@ namespace koi {
   }
 
   //% blockId=koi_getUltrasonicDistance block="Ultrasonic|Trig %Trig|Echo %Echo"
-  //% color="#87CEEB"
-  //% weight=100
-  //% blockGap=10
-  //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
+  //% group="Robot" weight=99
   export function getUltrasonicDistance(Trig: DigitalPin, Echo: DigitalPin): number {
     // send pulse
     let list: Array<number> = [0, 0, 0, 0, 0];
