@@ -512,6 +512,30 @@ namespace koi {
     serial.writeBuffer(Buffer.fromArray([0xff, 0x02, 0x0f, step]))
   }
 
+  //% blockId=koi_getUltrasonicDistance block="Ultrasonic|Trig %Trig|Echo %Echo"
+  //% color="#87CEEB"
+  //% weight=100
+  //% blockGap=10
+  //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
+  export function getUltrasonicDistance(Trig: DigitalPin, Echo: DigitalPin): number {
+    // send pulse
+    let list: Array<number> = [0, 0, 0, 0, 0];
+    for (let i = 0; i < 5; i++) {
+      pins.setPull(Trig, PinPullMode.PullNone);
+      pins.digitalWritePin(Trig, 0);
+      control.waitMicros(2);
+      pins.digitalWritePin(Trig, 1);
+      control.waitMicros(15);
+      pins.digitalWritePin(Trig, 0);
+
+      let d = pins.pulseIn(Echo, PulseValue.High, 43200);
+      list[i] = Math.floor(d / 40)
+    }
+    list.sort();
+    let length = (list[1] + list[2] + list[3]) / 3;
+    return Math.floor(length);
+  }
+
 /********************************************************************************* */
 
   //% blockId=koi_initPW block="KOI init powerbrick|Port %port"
